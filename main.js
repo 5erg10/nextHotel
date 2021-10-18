@@ -7,7 +7,7 @@ var socketIO;
 
 var app = express();
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 443;
 
 var server = http.createServer(app);
 
@@ -17,7 +17,6 @@ server.listen(port, function() {
 	console.log('socket server running on '+port+' port');
 });
 
-app.use(express.static("web"));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -27,11 +26,6 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', apiRoutes);
-
-app.get('/', (request, response) => {
-  response.redirect('/index.html');
-  response.send("hello world");
-});
 
 secIO.on('connection', function(socket) {
     socketIO = socket;
