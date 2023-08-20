@@ -17,7 +17,6 @@ server.listen(port, function() {
 	console.log('socket server running on '+port+' port');
 });
 
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "'GET,PUT,POST,DELETE");
